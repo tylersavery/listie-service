@@ -34,3 +34,12 @@ def update_item(db: Session, id: int, item: schemas.ItemUpdate):
 def delete_item(db: Session, id: int):
     db_item = db.query(models.Item).get(id)
     db.delete(db_item)
+    db.commit()
+
+
+def purchase_item(db: Session, id: int, purchased: bool):
+    db_item = db.query(models.Item).get(id)
+    db_item.purchased = purchased
+    db.commit()
+    db.refresh(db_item)
+    return db_item

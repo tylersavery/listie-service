@@ -6,6 +6,7 @@ class ItemBase(BaseModel):
     name: str
     category: str
     purchased: bool
+    starred: bool
 
 
 class ItemCreate(ItemBase):

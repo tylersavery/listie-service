@@ -43,3 +43,11 @@ def purchase_item(db: Session, id: int, purchased: bool):
     db.commit()
     db.refresh(db_item)
     return db_item
+
+
+def star_item(db: Session, id: int, starred: bool = True):
+    db_item = db.query(models.Item).get(id)
+    db_item.starred = starred
+    db.commit()
+    db.refresh(db_item)
+    return db_item

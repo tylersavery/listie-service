@@ -11,3 +11,4 @@ class Item(Base):
     name = Column(String, index=True)
     category = Column(String, index=True)
     purchased = Column(Boolean, index=True)
+    starred = Column(Boolean, index=True, default=False, nullable=False)

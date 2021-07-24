@@ -57,3 +57,13 @@ def purchase_item(id: int = id, db: Session = Depends(get_db)):
 def unpurchase_item(id: int = id, db: Session = Depends(get_db)):
     item = crud.purchase_item(db, id=id, purchased=False)
     return item
+
+
+@app.post("/items/{id}/star/", response_model=schemas.Item)
+def purchase_item(id: int = id, db: Session = Depends(get_db)):
+    return crud.star_item(db=db, id=id, starred=True)
+
+
+@app.post("/items/{id}/unstar/", response_model=schemas.Item)
+def unpurchase_item(id: int = id, db: Session = Depends(get_db)):
+    return crud.star_item(db=db, id=id, starred=False)
